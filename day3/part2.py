@@ -25,19 +25,11 @@ def bin_to_dec(bin):
 	return sum([2**i for i, c in enumerate(reversed(list(bin))) if c == '1'])
 
 
-def eq(x, y):
-	return x == y
-
-
-def ne(x, y):
-	return x != y
-
-
 def main():
 	print('Starting...')
 	if len(sys.argv) == 2:
-		oxygen = get_val_most_common_bit_func(sys.argv[1], eq)
-		co2 = get_val_most_common_bit_func(sys.argv[1], ne)
+		oxygen = get_val_most_common_bit_func(sys.argv[1], lambda x, y: x == y)
+		co2 = get_val_most_common_bit_func(sys.argv[1], lambda x, y: x != y)
 		result = bin_to_dec(oxygen) * bin_to_dec(co2)
 		print('Success!', 'Result:', result)
 	else:
